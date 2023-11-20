@@ -10,7 +10,7 @@ class Television:
         self.__volume = Television.MIN_VOLUME
         self.__channel = Television.MIN_CHANNEL
 
-    def power(self) -> bool:
+    def power(self) -> None:
         """
         Checks to see if the T.V is off; if not it turns the T.V. on and vice versa.
         """
@@ -20,18 +20,17 @@ class Television:
             self.__status = False
         # print(f'Power is {self.__status}')
 
-    def mute(self: bool):
+    def mute(self) -> None:
         """ Checks to see if the T.V is powered on before changing the status of the
         different methods and their respective variables. If the status is false then nothing changes
         methods and variables If the t.v. is muted then it will be un-muted and vice versa.
         """
         if not self.__status:
-
             return
         elif not self.__muted:
             self.__muted = True
 
-    def channel_up(self: int):
+    def channel_up(self):
         """If the status of the T.V is true, then the channel will increase. However, if the channel reaches
         max, it will go back to the minimum."""
         if self.__status:
@@ -41,7 +40,7 @@ class Television:
             elif self.__channel == Television.MAX_CHANNEL:
                 self.__channel = Television.MIN_CHANNEL
 
-    def channel_down(self: int):
+    def channel_down(self):
         """If the status of the T.V is true, then the channel will decrease. However, if the channel reaches
         its minimum, it will go back to the max."""
 
@@ -52,7 +51,7 @@ class Television:
             elif self.__channel == Television.MIN_CHANNEL:
                 self.__channel = self.MAX_CHANNEL
 
-    def volume_up(self: int):
+    def volume_up(self):
         """Checks to see the status of the muted function. If its muted, it will unmute and increase the value of the volume.
                 if the volume is already at maximum level then nothing changes."""
         if self.__status:
@@ -61,10 +60,10 @@ class Television:
                     self.__muted = False
                 self.__volume += 1
                 # print(self.__volume)
-            else:
-                return self.__volume
+            # else:
+            #     return self.__volume
 
-    def volume_down(self: int):
+    def volume_down(self):
         """Checks to see the status of the muted function. If its muted, it will unmute and decrease the value of the volume.
         if the volume is already at minimum then nothing changes."""
         if self.__status:
@@ -73,10 +72,10 @@ class Television:
                     self.__muted = False
                 self.__volume -= 1
                 # print(self.__volume)
-            else:
-                return self.__volume
+            # else:
+            #     return self.__volume
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.__muted:
             return f'Power = {self.__status}, Channel = {self.__channel}, Volume = 0'
         else:
